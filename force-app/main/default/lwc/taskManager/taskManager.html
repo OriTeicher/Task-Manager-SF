@@ -1,5 +1,18 @@
 <template>
-    <!-- <ul class="task-list" for:each="tasks" for:item="task"> -->
-    <!-- <li>{task}</li> -->
-    <!-- </ul> -->
+    <template if:true={tasks.length}>
+        <h1 class="header">My Tasks Manager</h1>
+        <ul class="task-list" for:each={tasks} for:item="task" key={task._id}>
+            <li class="task-preview">
+                <h1 class={task}>{task.description}</h1>
+                <h2 class={task}>Importance: <span>{task.importance}</span></h2>
+                <h3>Created date: {task.createdAt}</h3>
+                <div class="right-section">
+                    <input type="checkbox" checked={task.isDone}>
+                </div>
+            </li>
+        </ul>
+    </template>
+    <template if:false={tasks.length}>
+        <p>No tasks found.</p>
+    </template>
 </template>

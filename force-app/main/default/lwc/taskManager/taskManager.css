@@ -1,0 +1,65 @@
+.task-list {
+    background-color: #fff;
+    list-style: none;
+    gap: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
+    padding-inline-start: 17px;
+    font-size: 1rem;
+    padding-block-end: 10px;
+}
+
+.task-list:nth-child(2n) {
+    background-color: #fafafa;
+}
+
+.task-preview {
+    display: grid;
+    align-items: center;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 0.9fr 0.1fr;
+    flex-direction: column;
+    gap: 5px;
+    padding-block-start: 10px;
+}
+
+
+
+.task-list:last-child() {
+    padding-block-end: 10px;
+}
+
+input {
+    justify-self: center;
+    align-self: center;
+}
+
+.header {
+    background-color: #fff;
+    padding: 17px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: linear-gradient(lightskyblue, #fff);
+}
+
+.task-preview.h2 {
+    font-size: 1em;
+}
+
+.task-preview.h2 span {
+    font-size: 1em;
+    color: lightcoral;
+}
+
+.task-preview.h3 {
+    font-size: 0.8em;
+    color: lightslategray;
+}
+
+.task-preview .right-section {
+    display: flex;
+    gap: 5px;
+    grid-row: 1/-1;
+    grid-column: 2;
+    justify-content: end;
+    padding-inline-end: 17px;
+}
