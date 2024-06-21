@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 17px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: linear-gradient(lightskyblue, #fff);
+}
+
+.task-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.task-stats span {
+    height: 100%;
+    transition: scale 0.2s ease-in-out;
+}
+
+.task-stats span:hover {
+    cursor: pointer;
+    scale: 1.1;
+    opacity: 0.8;
+}

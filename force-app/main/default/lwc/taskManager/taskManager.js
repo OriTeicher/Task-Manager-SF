@@ -4,6 +4,7 @@ export default class TaskManager extends LightningElement {
 
     @track tasks = []
     doneTasks = []
+    activeTasks = []
     currTasksCount = 10
 
     async connectedCallback(){
@@ -16,15 +17,7 @@ export default class TaskManager extends LightningElement {
         }
     }
 
-    setTaskClass(task){
-        return task.isDone ? 'done' : 'in-progress'
-    }
 
-    setImportanceClass(task){
-        return task.importance === 1 ? 'low' :
-            task.importance === 2 ? 'medium' : 'high'
-    }
-    
 
 
 }

@@ -21,10 +21,17 @@ function _getRandomTask(){
     return {
         _id: 'T-' + _getRandomIntInclusive(1,10^6),
         createdAt:  _formatDate(new Date()),
-        importance: _getRandomIntInclusive(1,3), 
+        importance: _getRandomImportancy(), 
         isDone: _getRandomIntInclusive(0,1) ? true : false, 
         description: `Finish fixing bug #${_getRandomIntInclusive(1,10)}`
     }
+}
+
+function _getRandomImportancy(){
+    const importance = _getRandomIntInclusive(1,3)
+    if(importance === 1) return 'low'
+    else if(importance === 2) return 'medium'
+    else return 'high'
 }
 
 function _getRandomIntInclusive(min, max) {
