@@ -10,5 +10,6 @@
       "options": { "parser": "html" }
     }
   ],
-  "semi": true
+  "semi": true,
+  "tabWidth": 2
 }

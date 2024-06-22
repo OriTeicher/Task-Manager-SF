@@ -5,16 +5,16 @@ export default class TaskPreview extends LightningElement {
     @track descClass;
 
     connectedCallback() {
-        this.descClass = this.task.isDone ? 'done' : 'active';
+        this.descClass = this.task.IsDone__c ? 'done' : 'active';
     }
 
     handleCheckboxChange(event) {
 
         const updatedTask = { ...this.task };
-        updatedTask.isDone = event.target.checked;
+        updatedTask.IsDone__c = event.target.checked;
 
         this.task = updatedTask;
-        this.descClass = this.task.isDone ? 'done' : 'active';
+        this.descClass = this.task.IsDone__c ? 'done' : 'active';
 
         const taskChangeEvent = new CustomEvent('taskchange', {
             detail: { task: updatedTask },

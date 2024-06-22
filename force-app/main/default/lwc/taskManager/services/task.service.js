@@ -17,17 +17,18 @@ async function getTasks(amount){
     })
 }
 
-function _getRandomTask(){
+function _getRandomTask() {
     return {
-        _id: 'T-' + _getRandomIntInclusive(1,100000),
-        createdAt:  _formatDate(new Date()),
-        importance: _getRandomImportancy(), 
-        isDone: _getRandomIntInclusive(0,1) ? true : false, 
-        description: `Finish fixing bug #${_getRandomIntInclusive(1,10)}`
-    }
+        Id: 'T-' + _getRandomIntInclusive(1, 100000),
+        createdAt__c: _formatDate(new Date()),
+        Importance__c: _getRandomImportance(), 
+        IsDone__c: _getRandomIntInclusive(0, 1) ? true : false,
+        Description__c: `Finish fixing bug #${_getRandomIntInclusive(1, 100000)}`, 
+
+    };
 }
 
-function _getRandomImportancy(){
+function _getRandomImportance(){
     const importance = _getRandomIntInclusive(1,3)
     if(importance === 1) return 'low'
     else if(importance === 2) return 'medium'

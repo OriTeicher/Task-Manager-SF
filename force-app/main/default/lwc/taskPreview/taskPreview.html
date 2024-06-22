@@ -1,13 +1,13 @@
 <template>
     <li class="task-preview">
         <div class="left-section">
-            <h1 class={descClass}>{task.description}</h1>
-            <h2>Importance: <span class={task.importance}>{task.importance}</span></h2>
-            <h3>Created date: {task.createdAt}</h3>
-            <h4>{task._id}</h4>
+            <h1 class={descClass}>{task.Description__c}</h1>
+            <h2>Importance: <span class={task.Importance__c}>{task.Importance__c}</span></h2>
+            <h3>Created date: {task.createdAt__c}</h3>
+            <h4>{task.Id}</h4>
         </div>
         <div class="right-section">
-            <input type="checkbox" checked={task.isDone} onchange={handleCheckboxChange}>
+            <input type="checkbox" checked={task.IsDone__c} onchange={handleCheckboxChange}>
         </div>
     </li>
 </template>
