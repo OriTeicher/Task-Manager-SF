@@ -1,22 +1,14 @@
 .task-preview {
-    display: grid;
     align-items: center;
-    grid-template-rows: repeat(3, auto);
-    grid-template-columns: 0.9fr 0.1fr;
-    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
     gap: 5px;
-    padding-block-start: 10px;
+    padding: 17px;
+
 }
 
-
-
-.task-list:last-child() {
-    padding-block-end: 10px;
-}
-
-input {
-    justify-self: center;
-    align-self: center;
+.task-preview h1 {
+    font-size: 1.3em;
 }
 
 .task-preview.h2 {
@@ -33,13 +25,9 @@ input {
     color: lightslategray;
 }
 
-.task-preview .right-section {
-    display: flex;
-    gap: 5px;
-    grid-row: 1/-1;
-    grid-column: 2;
-    justify-content: end;
-    padding-inline-end: 17px;
+.task-preview .right-section input {
+    width: 22px;
+    height: 22px;
 }
 
 .low {
@@ -52,4 +40,12 @@ input {
 
 .high {
     color: lightcoral;
+}
+
+.active {
+    text-decoration: none;
+}
+
+.done {
+    text-decoration: line-through;
 }

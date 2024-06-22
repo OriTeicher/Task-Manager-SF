@@ -1,14 +1,13 @@
 <template>
     <template if:true={tasks.length}>
-
-        <c-task-manager-header tasks={tasks}></c-task-manager-header>
-
-        <ul class="task-list" for:each={tasks} for:item="task" key={task._id}>
-            <c-task-preview task={task}></c-task-preview>
-        </ul>
-
-        <template if:false={tasks.length}>
-            <h1>No tasks found.</h1>
-        </template>
+        <section class="main-layout">
+            <c-task-manager-header tasks={tasks}></c-task-manager-header>
+            <ul class="task-list" for:each={tasks} for:item="task" key={task._id}>
+                <c-task-preview task={task} ontaskchange={handleTaskChange}></c-task-preview>
+            </ul>
+        </section>
+    </template>
+    <template if:false={tasks.length}>
+        <h1>No tasks found.</h1>
     </template>
 </template>

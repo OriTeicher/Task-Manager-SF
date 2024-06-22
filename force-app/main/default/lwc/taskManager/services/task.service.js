@@ -19,7 +19,7 @@ async function getTasks(amount){
 
 function _getRandomTask(){
     return {
-        _id: 'T-' + _getRandomIntInclusive(1,10^6),
+        _id: 'T-' + _getRandomIntInclusive(1,100000),
         createdAt:  _formatDate(new Date()),
         importance: _getRandomImportancy(), 
         isDone: _getRandomIntInclusive(0,1) ? true : false, 
