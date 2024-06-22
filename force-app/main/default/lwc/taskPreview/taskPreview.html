@@ -4,7 +4,7 @@
             <h1 class={descClass}>{task.Description__c}</h1>
             <h2>Importance: <span class={task.Importance__c}>{task.Importance__c}</span></h2>
             <h3>Created date: {task.createdAt__c}</h3>
-            <h4>{task.Id}</h4>
+            <h4>Id: #{task.Id}</h4>
         </div>
         <div class="right-section">
             <input type="checkbox" checked={task.IsDone__c} onchange={handleCheckboxChange}>
