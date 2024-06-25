@@ -22,7 +22,7 @@ function _getRandomTask() {
     createdAt__c: _formatDate(new Date()),
     Importance__c: _getRandomImportance(),
     isDone__c: _getRandomIntInclusive(0, 1) ? true : false,
-    Description__c: `Finish fixing bug #${_getRandomIntInclusive(1, 100000)}`,
+    Description__c: `Finish fixing bug #${_getRandomIntInclusive(100, 1000)}`,
   }
 }
 

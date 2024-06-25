@@ -13,7 +13,7 @@ export default class TaskPreview extends LightningElement {
   onRemoveTask() {
     this.loaderMsg = "Removing task..."
     const taskChangeEvent = new CustomEvent("removetask", {
-      detail: { taskId: this.task.Id },
+      detail: { taskId: this.task.Name },
       bubbles: true,
       composed: true,
     })

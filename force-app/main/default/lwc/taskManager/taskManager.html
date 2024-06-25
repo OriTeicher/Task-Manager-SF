@@ -2,14 +2,13 @@
     <template if:true={tasks.length}>
         <section class="main-layout">
             <c-task-manager-header tasks={tasks}></c-task-manager-header>
-            <ul class="task-list" for:each={tasks} for:item="task" key={task.Id}>
+            <ul class="task-list" for:each={tasks} for:item="task" key={task.Name}>
                 <c-task-preview task={task} loader={isLoaderOn} ontaskchange={handleTaskChange}
                     onremovetask={handleRemoveTask}></c-task-preview>
             </ul>
         </section>
     </template>
     <template if:false={tasks.length}>
-
         <lightning-spinner style="height: 100%;" alternative-text="Loading" size="small" variant="brand">
         </lightning-spinner>
     </template>

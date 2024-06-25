@@ -3,20 +3,25 @@ import { taskService } from "./services/task.service.js"
 import saveTask from "@salesforce/apex/TaskController.saveTask"
 import getTasks from "@salesforce/apex/TaskController.getTasks"
 import deleteTask from "@salesforce/apex/TaskController.deleteTask"
+
 export default class TaskManager extends LightningElement {
   @track tasks = []
   DEMO_TASKS_COUNT = 10
   isLoaderOn = false
 
   async connectedCallback() {
-    window.addEventListener("taskchange", this.handleTaskChange, false)
+    window.addEventListener(
+      "taskchange",
+      this.handleTaskChange.bind(this),
+      false
+    )
     try {
       this.tasks = await getTasks()
       console.log("this.tasksFRONT", this.tasks)
-      if (!this.tasks.length || !this.tasks) {
+      if (!this.tasks.length) {
         const DEMO_TASKS = await taskService.getDemoTasks(this.DEMO_TASKS_COUNT)
         this.tasks = DEMO_TASKS
-        this.saveTasks()
+        await this.saveTasks()
       }
     } catch (err) {
       console.log(err)
@@ -25,8 +30,7 @@ export default class TaskManager extends LightningElement {
 
   async handleTaskChange(event) {
     try {
-      console.log("this.tasks", JSON.stringify(this.tasks))
-      const taskId = event.detail.task.Id
+      const taskId = event.detail.task.Name
       console.log("taskId", taskId)
       const updatedTask = { ...event.detail.task }
       await saveTask({ task: updatedTask })
@@ -40,9 +44,9 @@ export default class TaskManager extends LightningElement {
     try {
       this.isLoaderOn = true
       await deleteTask({ taskId })
-      this.tasks = this.tasks.filter((task) => task.Id !== taskId)
+      this.tasks = this.tasks.filter((task) => task.Name !== taskId)
       await this.saveTasks()
-      await getTasks()
+      this.tasks = await getTasks()
     } catch (error) {
       console.log(error.message)
     } finally {
@@ -52,9 +56,7 @@ export default class TaskManager extends LightningElement {
 
   async saveTasks() {
     try {
-      const savePromises = this.tasks.map((task) => {
-        return saveTask({ task })
-      })
+      const savePromises = this.tasks.map((task) => saveTask({ task }))
       await Promise.all(savePromises)
     } catch (error) {
       console.log(error.message)
@@ -62,6 +64,10 @@ export default class TaskManager extends LightningElement {
   }
 
   disconnectedCallback() {
-    window.removeEventListener("taskchange", this.handleTaskChange, false)
+    window.removeEventListener(
+      "taskchange",
+      this.handleTaskChange.bind(this),
+      false
+    ) // Ensure proper context binding
   }
 }
