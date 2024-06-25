@@ -1,26 +1,37 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api, track } from "lwc"
 
 export default class TaskPreview extends LightningElement {
-    @api task;
-    @track descClass;
+  @api task
+  @track descClass
+  @api loader
+  loaderMsg
 
-    connectedCallback() {
-        this.descClass = this.task.IsDone__c ? 'done' : 'active';
-    }
+  connectedCallback() {
+    this.descClass = this.task.isDone__c ? "done" : "active"
+  }
 
-    handleCheckboxChange(event) {
+  onRemoveTask() {
+    this.loaderMsg = "Removing task..."
+    const taskChangeEvent = new CustomEvent("removetask", {
+      detail: { taskId: this.task.Id },
+      bubbles: true,
+      composed: true,
+    })
+    this.dispatchEvent(taskChangeEvent)
+  }
 
-        const updatedTask = { ...this.task };
-        updatedTask.IsDone__c = event.target.checked;
+  handleCheckboxChange(event) {
+    const updatedTask = { ...this.task }
+    updatedTask.isDone__c = event.target.checked
 
-        this.task = updatedTask;
-        this.descClass = this.task.IsDone__c ? 'done' : 'active';
+    this.task = updatedTask
+    this.descClass = this.task.isDone__c ? "done" : "active"
 
-        const taskChangeEvent = new CustomEvent('taskchange', {
-            detail: { task: updatedTask },
-            bubbles: true,
-            composed: true
-        });
-        this.dispatchEvent(taskChangeEvent);
-    }
+    const taskChangeEvent = new CustomEvent("taskchange", {
+      detail: { task: updatedTask },
+      bubbles: true,
+      composed: true,
+    })
+    this.dispatchEvent(taskChangeEvent)
+  }
 }

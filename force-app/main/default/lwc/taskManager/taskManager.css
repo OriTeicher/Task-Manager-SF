@@ -1,19 +1,23 @@
 .task-list {
-    background-color: #ffffff88;
-    list-style: none;
-    gap: 5px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
-    font-size: 1rem;
+  background-color: #ffffff88;
+  list-style: none;
+  gap: 5px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI";
+  font-size: 1rem;
 }
 
 .task-list:nth-child(2n) {
-    background-color: #ffffffa1;
+  background-color: #ffffffa1;
 }
 
 .error-class {
-    background-color: #fff;
-    font-size: 16px;
-    width: fit-content;
-    color: lightcoral;
-    padding: 10px;
+  background-color: #fff;
+  font-size: 16px;
+  width: fit-content;
+  color: lightcoral;
+  padding: 10px;
 }

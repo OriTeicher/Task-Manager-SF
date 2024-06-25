@@ -1,25 +1,25 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 17px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    background: linear-gradient(lightskyblue, #fff);
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 17px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: linear-gradient(lightskyblue, #fff);
 }
 
 .tasks-stats {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .tasks-stats .stat {
-    height: 100%;
-    transition: scale 0.2s ease-in-out;
+  height: 100%;
+  transition: scale 0.2s ease-in-out;
 }
 
 .tasks-stats .stat:hover {
-    cursor: pointer;
-    scale: 1.1;
-    color: lightslategray;
+  cursor: pointer;
+  scale: 1.1;
+  color: lightslategray;
 }

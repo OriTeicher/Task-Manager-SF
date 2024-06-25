@@ -1,10 +1,14 @@
 <template>
-    <header>
-        <h1>My Tasks Manager</h1>
-        <p class="tasks-stats">
-            <span class="stat"> Total: {tasks.length} </span>
-            <span class="stat"> Active: {getRemainingTasksCount} </span>
-            <span class="stat"> Finished: {getFinishedTasksCount} </span>
-        </p>
-    </header>
+  <header>
+    <h1>My Tasks Manager</h1>
+    <template if:true={loader}>
+      <lightning-spinner style="height: 100%;" alternative-text="Loading" size="small"
+        variant="brand"></lightning-spinner>
+    </template>
+    <p class="tasks-stats">
+      <span class="stat"> Total: {tasks.length} </span>
+      <span class="stat"> Active: {getRemainingTasksCount} </span>
+      <span class="stat"> Finished: {getFinishedTasksCount} </span>
+    </p>
+  </header>
 </template>
