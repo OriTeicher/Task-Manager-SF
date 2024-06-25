@@ -1,5 +1,8 @@
 <template>
     <li class="task-preview" style="position: relative;">
+        <template if:true={getTaskEditStatus}>
+            <c-task-edit task={task}></c-task-edit>
+        </template>
         <template if:true={task.Name}>
             <div class="left-section">
                 <h1 class={descClass}>{task.Description__c}</h1>
@@ -12,10 +15,13 @@
             </div>
             <div class="right-section">
                 <input type="checkbox" checked={task.isDone__c} onchange={handleCheckboxChange} />
-                <button class="remove-task-btn" onclick={onRemoveTask}>Remove</button>
+                <div class="preview-btns">
+                    <button class="remove-task-btn" onclick={onRemoveTask}>Remove</button>
+                    <button class="remove-task-btn" onclick={handleEditTask}>Edit</button>
+                </div>
             </div>
             <template if:true={loader}>
-                <h1 style="position: absolute; right:10px; bottom: 10px">
+                <h1 style="position: absolute; right:10px; bottom: 10px; font-size: 15px">
                     {loaderMsg}
                 </h1>
             </template>

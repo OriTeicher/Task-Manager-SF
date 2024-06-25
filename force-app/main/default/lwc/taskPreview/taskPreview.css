@@ -1,4 +1,5 @@
 .task-preview {
+    position: relative;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -68,6 +69,7 @@
 }
 
 .remove-task-btn {
+    min-width: 77px;
     border: none;
     background-color: transparent;
     color: white;
@@ -79,4 +81,10 @@
 
 .remove-task-btn:hover {
     background-color: #101010;
+}
+
+.preview-btns {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }

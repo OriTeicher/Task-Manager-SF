@@ -8,16 +8,19 @@ export default class TaskManager extends LightningElement {
   @track tasks = []
   DEMO_TASKS_COUNT = 10
   isLoaderOn = false
+  isEditTask = false
+  selectedTaskId
+  
+
+  loadCustomEvents() {
+    window.addEventListener("edittask", this.handleEditTask.bind(this), false)
+    window.addEventListener("taskchange", this.handleTaskChange.bind(this), false)
+  }
 
   async connectedCallback() {
-    window.addEventListener(
-      "taskchange",
-      this.handleTaskChange.bind(this),
-      false
-    )
     try {
+      this.loadCustomEvents()
       this.tasks = await getTasks()
-      console.log("this.tasksFRONT", this.tasks)
       if (!this.tasks.length) {
         const DEMO_TASKS = await taskService.getDemoTasks(this.DEMO_TASKS_COUNT)
         this.tasks = DEMO_TASKS
@@ -26,6 +29,12 @@ export default class TaskManager extends LightningElement {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  async handleEditTask(event) {
+    console.log('handling edit')
+    this.isEditTask = true
+    this.selectedTaskId = event.detail.task.Id
   }
 
   async handleTaskChange(event) {
@@ -70,10 +79,8 @@ export default class TaskManager extends LightningElement {
   }
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "taskchange",
-      this.handleTaskChange.bind(this),
-      false
-    ) // Ensure proper context binding
+    window.addEventListener("edittask", this.handleTaskEdit.bind(this), false)
+    window.addEventListener("taskchange", this.handleTaskEdit.bind(this), false)
   }
 }
+
