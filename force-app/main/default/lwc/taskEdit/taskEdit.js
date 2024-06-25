@@ -1,13 +1,37 @@
 import { LightningElement, api } from "lwc"
 
 export default class TaskEdit extends LightningElement {
-  @api task
-  taskToEdit
+   @api task
+   taskToEdit
 
-  connectedCallback() {
-    console.log("hello from task edit, the selected task is\n", this.task)
-    this.taskToEdit = { ...this.task }
-  }
+   connectedCallback() {
+      this.taskToEdit = { ...this.task }
+   }
 
-  handleInputChange(event) {}
+   handleInputChange(event) {
+      event.preventDefault()
+      const { value, name: field } = event.target
+      this.taskToEdit = { ...this.taskToEdit, [field]: value }
+   }
+
+   handleSaveEdit(event) {
+      event.preventDefault()
+      const taskChangeEvent = new CustomEvent("taskchange", {
+         detail: { task: this.taskToEdit },
+         bubbles: true,
+         composed: true,
+      })
+      this.dispatchEvent(taskChangeEvent)
+   }
+
+   handleCancelEdit(event) {
+      event.preventDefault()
+      this.taskToEdit = null
+      const taskChangeEvent = new CustomEvent("taskchange", {
+         detail: { task: null },
+         bubbles: true,
+         composed: true,
+      })
+      this.dispatchEvent(taskChangeEvent)
+   }
 }

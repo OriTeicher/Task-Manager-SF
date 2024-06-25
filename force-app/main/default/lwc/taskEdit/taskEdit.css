@@ -4,7 +4,21 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: rgba(135, 206, 250, 0.747);
+    z-index: 2;
+    gap: 10px;
+    padding-inline-start: 17px;
+    background-color: lightslategray;
+}
+
+form input {
+    background-color: transparent;
+    border: none;
     border-radius: 10px;
+}
+
+form input {}
+
+form input:focus {
+    border: none;
+    outline: none;
 }

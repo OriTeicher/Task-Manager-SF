@@ -4,8 +4,7 @@
             <c-task-manager-header tasks={tasks}></c-task-manager-header>
             <ul class="task-list" for:each={tasks} for:item="task" key={task.Name}>
                 <c-task-preview task={task} loader={isLoaderOn} ontaskchange={handleTaskChange} isedit={isEditTask}
-                    ontaskedit={handleEditTask} onremovetask={handleRemoveTask}
-                    selectedtaskid={selectedTaskId}></c-task-preview>
+                    onremovetask={handleRemoveTask} selectedtaskid={selectedTaskId}></c-task-preview>
             </ul>
         </section>
     </template>
