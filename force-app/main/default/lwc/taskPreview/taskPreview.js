@@ -31,21 +31,23 @@ export default class TaskPreview extends LightningElement {
       this.task = updatedTask
       this.descClass = this.task.isDone__c ? "done" : "active"
       const taskChangeEvent = new CustomEvent("taskchange", {
-         detail: { task: updatedTask },
+         detail: { task: updatedTask, type: "checkbox" },
          bubbles: true,
          composed: true,
       })
       this.dispatchEvent(taskChangeEvent)
+      this.loaderMsg = ""
    }
 
    handleEditTask() {
       const updatedTask = { ...this.task }
       this.loaderMsg = "Saving Task..."
       const taskChangeEvent = new CustomEvent("taskchange", {
-         detail: { task: updatedTask },
+         detail: { task: updatedTask, type: "open-editor" },
          bubbles: true,
          composed: true,
       })
       this.dispatchEvent(taskChangeEvent)
+      this.loaderMsg = ""
    }
 }

@@ -9,14 +9,19 @@
 
 .task-preview h1 {
     font-size: 1.3em;
+    margin-bottom: 10px;
 }
 
 .task-preview.h2 {
+    display: flex;
+    align-items: center;
     font-size: 1em;
+    margin-block-start: 20px;
 }
 
 .task-preview.h2 span {
     font-size: 1em;
+    margin-inline-start: 10px;
     color: lightcoral;
 }
 
@@ -26,15 +31,28 @@
 }
 
 .task-preview .right-section input {
-    width: 22px;
-    height: 22px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
 }
 
 .task-preview .right-section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 15px;
+}
+
+
+.low,
+.medium,
+.high {
+    display: inline-block;
+    text-align: center;
+    width: 90px;
+    padding: 1px 5px;
+    background-color: rgba(255, 255, 255, 0.438);
+    border-radius: 10px;
 }
 
 .low {
@@ -55,32 +73,29 @@
 
 .done {
     background-color: #000;
-    border-radius: 20px;
-    opacity: 0.3;
-    padding: 0px 10px;
+    opacity: 0.1;
     transition: opacity 0.2 ease-in-out;
 }
 
 .done:hover {
     background-color: transparent;
     color: black;
-    text-decoration: line-through;
     opacity: 1;
+    cursor: help;
 }
 
 .remove-task-btn {
     min-width: 77px;
     border: none;
-    background-color: transparent;
-    color: white;
-    background-color: #333;
-    padding: 10px;
+    background-color: #fff;
+    padding: 5px 10px;
     border-radius: 10px;
     font-size: 1em;
 }
 
 .remove-task-btn:hover {
-    background-color: #101010;
+    background-color: lightslategray;
+    cursor: pointer;
 }
 
 .preview-btns {

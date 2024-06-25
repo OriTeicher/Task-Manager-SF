@@ -2,7 +2,7 @@ public with sharing class taskController {
 
     @AuraEnabled
     public static List<CustomTask__c> getTasks() {
-        return [SELECT Id,Name, Description__c, IsDone__c FROM CustomTask__c];
+        return [SELECT Id,Name, Description__c, IsDone__c, Importance__c, createdAt__c FROM CustomTask__c];
     }
 
     @AuraEnabled

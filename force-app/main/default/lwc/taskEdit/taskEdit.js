@@ -24,7 +24,7 @@ export default class TaskEdit extends LightningElement {
       this.dispatchEvent(taskChangeEvent)
    }
 
-   handleCancelEdit(event) {
+   handleCloseEdit(event) {
       event.preventDefault()
       this.taskToEdit = null
       const taskChangeEvent = new CustomEvent("taskchange", {

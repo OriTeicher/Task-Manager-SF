@@ -42,21 +42,19 @@ export default class TaskManager extends LightningElement {
 
    async handleTaskChange(event) {
       try {
-         this.isLoaderOn = true
          this.selectedTaskId = event.detail.task ? event.detail.task.Id : null
          this.isEditTask = this.selectedTaskId ? true : false
          if (!this.isEditTask) return
+         if(event.detail.type === 'open-editor') return
+         if(event.detail.type === 'checkbox') this.isEditTask = false
          const taskToEdit = { ...event.detail.task }
-         console.log('taskToEdit',JSON.stringify({ ...event.detail.task }))
          await saveTask({ task: taskToEdit })
          this.tasks = this.tasks.map((task) =>
             task.Id === this.selectedTaskId ? taskToEdit : task,
          )
+         this.isEditTask = false
       } catch (error) {
          console.error("Error in handleTaskChange:", error.message)
-      }finally{
-        this.isLoaderOn = false
-        this.isEditTask = false
       }
    }
 
@@ -86,12 +84,12 @@ export default class TaskManager extends LightningElement {
    disconnectedCallback() {
       window.removeEventListener(
          "taskchange",
-         this.handleTaskEdit.bind(this),
+         this.handleTaskChange.bind(this),
          false,
       )
       window.removeEventListener(
         "removetask",
-         this.handleTaskChange.bind(this),
+         this.handleRemoveTask.bind(this),
          false,
       )
    }

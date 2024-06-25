@@ -3,22 +3,44 @@ form {
     inset: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     z-index: 2;
     gap: 10px;
-    padding-inline-start: 17px;
-    background-color: lightslategray;
+    padding: 17px;
+    background: linear-gradient(to right, #DAE3F1, #E2E9F4);
 }
 
 form input {
+    background-color: #DAE3F1;
     background-color: transparent;
     border: none;
-    border-radius: 10px;
+    line-height: 3px;
+    font-size: 20.8px;
+    width: 90%;
 }
 
-form input {}
+form select {
+    width: 200px;
+    text-align: center;
+}
 
 form input:focus {
-    border: none;
     outline: none;
+}
+
+.edit-btns {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.edit-btns button {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 10px;
+}
+
+.edit-btns button:hover {
+    background-color: lightgray;
 }
