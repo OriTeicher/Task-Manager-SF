@@ -34,6 +34,12 @@ export default class TaskManager extends LightningElement {
       console.log("taskId", taskId)
       const updatedTask = { ...event.detail.task }
       await saveTask({ task: updatedTask })
+      this.tasks = this.tasks.map((task) => {
+        if (task.Name === taskId) {
+          return updatedTask
+        }
+        return task
+      })
     } catch (error) {
       console.error("Error in handleTaskChange:", error.message)
     }

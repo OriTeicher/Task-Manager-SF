@@ -1,22 +1,24 @@
 <template>
     <li class="task-preview" style="position: relative;">
-        <div class="left-section">
-            <h1 class={descClass}>{task.Description__c}</h1>
-            <h2>
-                Importance: <span class={task.Importance__c}>{task.Importance__c}</span>
-            </h2>
-            <h3>Created date: {task.createdAt__c}</h3>
-            <h4>Task id - #_<span>{task.Name}</span>
-            </h4>
-        </div>
-        <div class="right-section">
-            <input type="checkbox" checked={task.isDone__c} onchange={handleCheckboxChange} />
-            <button class="remove-task-btn" onclick={onRemoveTask}>Remove</button>
-        </div>
-        <template if:true={loader}>
-            <h1 style="position: absolute; right:10px; bottom: 10px">
-                {loaderMsg}
-            </h1>
+        <template if:true={task.Name}>
+            <div class="left-section">
+                <h1 class={descClass}>{task.Description__c}</h1>
+                <h2>
+                    Importance: <span class={task.Importance__c}>{task.Importance__c}</span>
+                </h2>
+                <h3>Created date: {task.createdAt__c}</h3>
+                <h4>Task id <span>{task.Name}</span>
+                </h4>
+            </div>
+            <div class="right-section">
+                <input type="checkbox" checked={task.isDone__c} onchange={handleCheckboxChange} />
+                <button class="remove-task-btn" onclick={onRemoveTask}>Remove</button>
+            </div>
+            <template if:true={loader}>
+                <h1 style="position: absolute; right:10px; bottom: 10px">
+                    {loaderMsg}
+                </h1>
+            </template>
         </template>
     </li>
 </template>
